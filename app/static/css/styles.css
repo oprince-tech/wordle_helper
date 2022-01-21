@@ -1,0 +1,136 @@
+:root {
+  --bg-color: #121213;
+  --text-color: #d7dadc;
+  --light-grey: #818384;
+  --dark-grey: #3a3a3c;
+  --custom-yellow: #b59f3b;
+  --custom-green: #538d4e;
+}
+
+html body {
+  background-color: var(--bg-color);
+}
+
+input:focus {
+  outline: none;
+}
+
+.container {
+  background-color: var(--bg-color);
+  margin-top: 50px !important;
+  /* width: 100% !important; */
+  max-width: 480px !important;
+  padding: 0 !important;
+  /* padding: 0 20vw !important; */
+  /* padding: 0 20% !important; */
+  justify-content: center !important;
+  position: relative;
+}
+
+#letterRow {
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.letterCol {
+  background-color: var(--bg-color);
+  width: auto;
+  position: relative !important;
+  height: 72px;
+  margin: 0 2% !important;
+  padding: 0 !important;
+}
+
+.letterCol .underscore {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  margin: 0;
+  height: 8px !important;
+  background-color: #DDDDDD;
+}
+
+::selection {
+  background-color: var(--bg-color);
+}
+::-moz-selection {
+  background-color: var(--bg-color);
+}
+
+.letterInput {
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  border: none !important;
+  text-transform: uppercase;
+  text-align: center !important;
+  font-size: 40px !important;
+  font-weight: bold;
+  border-style: none;
+  width: 100%;
+  height: 64px;
+}
+
+.yellow-sq {
+  background-color: var(--custom-yellow) !important;
+}
+
+.green-sq {
+  background-color: var(--custom-green) !important;
+}
+
+.grey-sq {
+  background-color: var(--dark-grey) !important;
+}
+
+#keyboard {
+  padding-top: 40px;
+  text-align: center;
+}
+
+#keyboard div {
+  margin: 8px 0;
+  display: inline-flex;
+}
+
+#keyboard span {
+  margin: 0 4px;
+  user-select: none;
+  width: 28px !important;
+  height: 28px !important;
+  line-height: 28px;
+  border-radius: 5px;
+  color: white;
+  background-color: var(--light-grey);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#submitContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+#submitContainer input {
+  width: 4em;
+  border-radius: 8px !important;
+  margin: 0 10px !important;
+}
+
+#matchesContainer {
+  color: var(--text-color);
+  font-size: 20px;
+  font-family: monospace;
+  padding-top: 40px;
+
+}
+#matchesContainer table {
+  margin: 0 auto;
+}

@@ -1,0 +1,8 @@
+bu
+venv
+__pycache__
+main.py
+combinations.npy
+bootstrap.*
+jquery.*
+wiki-*

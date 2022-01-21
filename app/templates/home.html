@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <title>Wordle Helper</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="letterRow">
+        <div class="letterCol">
+          <input class="letterInput" onClick="this.select();" maxlength="1" type="text" name="0" value="">
+          <div class="underscore"></div>
+        </div>
+        <div class="letterCol">
+          <input class="letterInput" onClick="this.select();" maxlength="1" type="text" name="1" value="">
+          <div class="underscore"></div>
+        </div>
+        <div class="letterCol">
+          <input class="letterInput" onClick="this.select();" maxlength="1" type="text" name="2" value="">
+          <div class="underscore"></div>
+        </div>
+        <div class="letterCol">
+          <input class="letterInput" onClick="this.select();" maxlength="1" type="text" name="3" value="">
+          <div class="underscore"></div>
+        </div>
+        <div class="letterCol">
+          <input class="letterInput" onClick="this.select();" maxlength="1" type="text" name="4" value="">
+          <div class="underscore"></div>
+        </div>
+      </div>
+      <div id="keyboard" class="">
+        <div id="topRow">
+          <span>Q</span>
+          <span>W</span>
+          <span>E</span>
+          <span>R</span>
+          <span>T</span>
+          <span>Y</span>
+          <span>U</span>
+          <span>I</span>
+          <span>O</span>
+          <span>P</span>
+        </div>
+        <div id="midRow">
+          <span>A</span>
+          <span>S</span>
+          <span>D</span>
+          <span>F</span>
+          <span>G</span>
+          <span>H</span>
+          <span>J</span>
+          <span>K</span>
+          <span>L</span>
+        </div>
+        <div id="btmRow">
+          <span>Z</span>
+          <span>X</span>
+          <span>C</span>
+          <span>V</span>
+          <span>B</span>
+          <span>N</span>
+          <span>M</span>
+        </div>
+      </div>
+      <div id="submitContainer">
+        <input type="button" id="submitButton" class="btn btn-info" name="" value="Run">
+        <input type="button" id="clearButton" class="btn btn-danger" name="" value="Clear">
+      </div>
+      <div id="matchesContainer">
+        <table>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script src="{{ url_for('static', filename='js/jquery.min.js') }}" charset="utf-8"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" charset="utf-8"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}" charset="utf-8"></script>
+</html>
