@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap5/bootstrap.min.css') }}">
     <title>Wordle Helper</title>
   </head>
   <body>
@@ -68,6 +68,13 @@
         <input type="button" id="submitButton" class="btn btn-info" name="" value="Run">
         <input type="button" id="clearButton" class="btn btn-danger" name="" value="Clear">
       </div>
+      <div id="errorContainer">
+      </div>
+      <div id="spinnerContainer">
+        <div class="text-center">
+          <div class="spinner-border text-info hidden"></div>
+        </div>
+      </div>
       <div id="matchesContainer">
         <table>
           <tbody>
@@ -77,6 +84,6 @@
     </div>
   </body>
   <script src="{{ url_for('static', filename='js/jquery.min.js') }}" charset="utf-8"></script>
-  <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" charset="utf-8"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap5/bootstrap.min.js') }}" charset="utf-8"></script>
   <script src="{{ url_for('static', filename='js/script.js') }}" charset="utf-8"></script>
 </html>

@@ -1,3 +1,4 @@
+// ROW CYCLE COLOR
 $('.underscore').click(function(){
   var input = $(this).parent().children('input');
   var value = input.val().toUpperCase();
@@ -21,6 +22,7 @@ $('.underscore').click(function(){
   }
 });
 
+// ROW GATHER
 $('.letterInput').on('input', function(){
   var letterCols = $(this).closest('#letterRow').children('.letterCol')
   if ($(this).val() == '') {
@@ -44,11 +46,15 @@ $('.letterInput').on('input', function(){
     key.addClass(letter['color']);
   });
 });
+
+// ROW KEYUP
 $('.letterInput').keyup(function(){
   var nextCol = $(this).closest('.letterCol').next();
-  nextCol.children('input').focus()
+  nextCol.children('input').focus();
+  nextCol.children('input').select();
 });
 
+// KEYBOARD CYCLE COLOR
 $('#keyboard').children().children().click(function(){
   if ($(this).hasClass('yellow-sq')) {
     $(this).removeClass('yellow-sq');
@@ -63,14 +69,17 @@ $('#keyboard').children().children().click(function(){
   }
 })
 
+// CLEAR
 $('#clearButton').click(function(){
   var keys = $('#keyboard').children().children()
   var cols = $('#letterRow').children().children('input')
   keys.removeClass();
   cols.removeClass('grey-sq yellow-sq green-sq');
   cols.val('');
+  $('#matchesContainer > table > tbody').children('tr').remove();
 });
 
+// SUBMIT
 $('#submitButton').click(function(){
   var letterCols = $('#letterRow').children('.letterCol');
   var spans = $('#keyboard').children('div').children('span');
@@ -93,22 +102,30 @@ $('#submitButton').click(function(){
   });
   var rows = $('#matchesContainer > table > tbody').children('tr');
   $.each(rows, function(){
-    $(this).remove();
   });
-  $.ajax({
-    type: 'POST',
-    url: '/run',
-    data: JSON.stringify({'hits': hits, 'misses': misses}),
-    contentType: 'application/json',
-    dataType: 'json',
-    cache: false,
-    processData: false,
-    success: function(data) {
-      $.each(data.matches, function(i, match){
-        $('#matchesContainer > table > tbody').append('<tr><td>'+ match +'</td><tr/>')
-      });
-    },
-    error: function(data) {
-    },
-  })
+  $('.spinner-border').removeClass('hidden');
+  $('#matchesContainer > table > tbody').children('tr').remove();
+  $('#errorContainer').children().remove();
+  if (!jQuery.isEmptyObject(hits) || !jQuery.isEmptyObject(misses)) {
+    $.ajax({
+      type: 'POST',
+      url: '/run',
+      data: JSON.stringify({'hits': hits, 'misses': misses}),
+      contentType: 'application/json',
+      dataType: 'json',
+      cache: false,
+      processData: false,
+      success: function(data) {
+        $.each(data.matches, function(i, match){
+          $('#matchesContainer > table > tbody').append('<tr><td>'+ match +'</td><tr/>')
+        });
+        $('.spinner-border').addClass('hidden');
+      },
+      error: function(data) {
+        $('#errorContainer').append('<span>' + data.responseText + '</span>')
+      },
+    });
+  } else {
+    $('#errorContainer').append('<span>No tiles selected.</span>')
+  }
 });
